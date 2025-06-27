@@ -20,7 +20,7 @@ export default function AccountPage() {
   const[image,setImage]=useState("/background.jpg")
   const fileInputRef=useRef<HTMLInputElement |null>(null);
   const{data:session,status}=useSession();
-  const[userData,setUserData]=useState<any>(null)
+  
 
 
   const handleImageChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -34,7 +34,7 @@ export default function AccountPage() {
   useEffect(() => {
     if(!session?.user?.email) return;
 
-    fetch(`/api/me?email=&{session.user.email}`)
+    fetch("/api/me")
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
