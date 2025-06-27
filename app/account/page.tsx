@@ -116,8 +116,9 @@ export default function AccountPage() {
           placeholder="Location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="w-full border p-2 rounded"
+          className="w-full relative border p-2 rounded"
         />
+        <button className="w-full rounded bg-blue-500 text-white text-left py-2">Me</button>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded"
