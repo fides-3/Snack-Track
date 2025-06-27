@@ -111,7 +111,7 @@ export const authOptions = {
           return {
             id: String(user.id),
             email: user.email,
-            // name: user.name || user.email, // Add name field
+          
             image: user.image || null, // Add image field
           };
         } catch (error) {
