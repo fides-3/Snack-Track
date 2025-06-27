@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import{useRef} from "react"
 import {FaCamera} from "react-icons/fa"
+import {useSession} from "next-auth/react"
 
 // ✅ Define a type for the user object
 type UserType = {
