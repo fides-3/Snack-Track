@@ -1,6 +1,7 @@
 import "./globals.css";
 import MainLayout from "@/components/MainLayout"
 import type { Metadata } from "next";
+import {Providers} from "./providers"
 
 export const metadata: Metadata = {
   title: "Snack & Track",
@@ -16,8 +17,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
 
+        <Providers>
        
           <MainLayout>{children}</MainLayout>
+        </Providers>
         
      
       </body>
