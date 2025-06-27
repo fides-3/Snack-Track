@@ -1,6 +1,3 @@
-import { NextResponse } from 'next/server';
+import { signOut } from "next-auth/react";
 
-export async function GET() {
-  // Clear cookies/session here if you’re using auth
-  return NextResponse.json({ message: "Logged out" });
-}
+signOut(); 
