@@ -19,6 +19,8 @@ export default function AccountPage() {
   const [message, setMessage] = useState("");
   const[image,setImage]=useState("/background.jpg")
   const fileInputRef=useRef<HTMLInputElement |null>(null);
+  const{data:session,status}=useSession();
+  const[userData,setUserData]=useState<any>(null)
 
 
   const handleImageChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -30,7 +32,9 @@ export default function AccountPage() {
   }
   // ✅ Load user data when component mounts
   useEffect(() => {
-    fetch("/api/me")
+    if(!session?.user?.email) return;
+
+    fetch(`/api/me?email=&{session.user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
@@ -38,7 +42,7 @@ export default function AccountPage() {
         setLocation(data.user.location || "");
         setImage(data.user.image || "/backgroundimage.jpg")
       });
-  }, []);
+  }, [session?.user?.email]);
 
   // ✅ Properly type the form event
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
