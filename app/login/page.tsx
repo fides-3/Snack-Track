@@ -1,4 +1,5 @@
 'use client';
+import {signIn} from "next-auth/react"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import{Mail,Eye,EyeOff} from "lucide-react";
@@ -14,18 +15,18 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect:false
     });
 
-    const data = await res.json();
+  
 
-    if (res.ok) {
+    if (res?.ok) {
       router.push("/welcome");
     } else {
-      setMessage(data.message || "Login failed");
+      setMessage("Invalid email or password");
     }
   };
 
