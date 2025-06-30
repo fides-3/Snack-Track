@@ -59,6 +59,8 @@ export async function GET(req: NextRequest) {
       where: { email: session.user.email },
       select: {
         email: true,
+        phone:true,
+        location:true,
         age: true,
         weight: true,
         gender: true,
