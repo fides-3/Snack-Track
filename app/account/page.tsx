@@ -30,7 +30,7 @@ export default function AccountPage() {
       setImage(imageUrl)
     }
   }
-  // ✅ Load user data when component mounts
+  // Load user data when component mounts
   useEffect(() => {
     if(!session?.user?.email) return;
 
@@ -44,11 +44,11 @@ export default function AccountPage() {
       });
   }, [session?.user?.email]);
 
-  // ✅ Properly type the form event
+  // Properly type the form event
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // ✅ Only send update if user exists
+    // Only send update if user exists
     if (!user) return;
 
     const res = await fetch("/api/update-profile", {
@@ -66,11 +66,11 @@ export default function AccountPage() {
     window.location.href = "/login";
   };
 
-  // ✅ Return loading if user is not yet loaded
+  // Return loading if user is not yet loaded
   if (!user) return <p className="text-center mt-10">Loading profile...</p>;
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow space-y-4">
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded-xl shadow-2xl space-y-4">
       <h1 className="text-2xl font-bold text-center">My Account</h1>
 
       <div className="relative w-24 h-24 mx-auto ">

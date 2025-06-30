@@ -8,13 +8,14 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 
-// POST -CREATE
+// POST METHOD -CREATE
 export async function POST(req: Request) {
   const { email, password } = await req.json();
 
   if (!email || !password) {
     return NextResponse.json({ message: 'All fields are required' }, { status: 400 });
   }
+
 
   try {
     const existingUser = await prisma.user.findUnique({

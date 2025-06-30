@@ -21,8 +21,9 @@ export default function UserInfoPage() {
   if (!info) return <p>Loading...</p>;
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold  space-y-4 mb-4">Your Info</h2>
+    <div className=" bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen flex items-center justify-center px-4 ">
+      <div className="bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-lg max-w-md w-full p-8 space-y-4 text-gray-800 text-left">
+      <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Your Info</h2>
       <p><strong>Email:</strong> {info.email}</p>
       <p><strong>Age:</strong> {info.age}</p>
       <p><strong>Weight:</strong> {info.weight}</p>
@@ -30,6 +31,7 @@ export default function UserInfoPage() {
       <p><strong>Height:</strong> {info.height}</p>
       <p><strong>Activity:</strong> {info.activity}</p>
       <p><strong>Goal:</strong> {info.goal}</p>
+      </div>
     </div>
   );
 }

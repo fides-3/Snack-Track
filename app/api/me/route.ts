@@ -46,7 +46,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/lib/prisma';
-//READS
+//READS DATA ENTERED BY USER IN THE FORMS
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {
@@ -80,7 +80,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// PUT UPDATES
+// PUT -UPDATES DATA ENTERED BY USERS
 export async function PUT(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {

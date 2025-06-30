@@ -2,7 +2,7 @@ import { NextRequest,NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
+// PUT METHOD -UPDATE
 export async function PUT(req: NextRequest) {
   try {
     
