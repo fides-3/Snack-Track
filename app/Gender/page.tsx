@@ -1,4 +1,5 @@
 "use client"
+import WizardProgress from '@/components/WizardProgress'
 import {useRouter} from 'next/navigation'
 import {useState} from 'react'
 function Gender(){
@@ -41,6 +42,7 @@ function Gender(){
         <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen p-8">
             <form onSubmit={handleSubmit}>
             <div className=" relative max-w-2xl rounded-full bg-white place-items-center mx-auto p-6    ">
+              <WizardProgress currentStep={2} totalSteps={6}  />
         <p className='font-semibold text-2xl'>🔹What is your gender?</p>
         <br></br>
         <div className="flex-col space-y-4 flex justify-center">
