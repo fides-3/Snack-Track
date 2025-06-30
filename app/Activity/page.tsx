@@ -1,4 +1,5 @@
 "use client"
+import WizardProgress from '@/components/WizardProgress'
 import {useState} from 'react'
 import {useRouter} from 'next/navigation'
 function Activity(){
@@ -39,6 +40,8 @@ function Activity(){
         <div className="bg-[url('/backgroundimage.jpg')]  bg-cover bg-center p-8   min-h-screen">
             <form onSubmit={handleSubmit}>
      <div className=" relative mx-auto p-6 max-w-2xl rounded-full bg-white place-items-center ">
+      <WizardProgress currentStep={3} totalSteps={6}  />
+     
         
                 <p className='font-semibold text-2xl text-center'>🔹How active are you?</p>
                 <div className='flex flex-col justify-center'>
@@ -81,6 +84,8 @@ function Activity(){
 
             </div>
             </form>
+             
+
         </div>
     )
 
