@@ -1,6 +1,7 @@
 "use client"
 import {useRouter} from 'next/navigation'
 import {useState} from 'react'
+import WizardProgress from '@/components/WizardProgress'
 
 
 function Goal(){
@@ -39,6 +40,7 @@ function Goal(){
         <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen p-8">
           <form onSubmit={handleSubmit}>
             <div className="  relative  rounded-full place-items-center p-20 mx-auto bg-white max-w-2xl">
+              <WizardProgress currentStep={1} totalSteps={6}  />
                 <p className="text-center font-semibold text-2xl ">🔹What is Your goal?</p>
                 <br></br>
                 <div className="flex-col flex justify-center">
