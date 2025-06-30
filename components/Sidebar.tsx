@@ -5,7 +5,7 @@ function Sidebar(){
         <div className="w-48 fixed left-0 top-0   bg-white  space-y-4 h-screen">
             <img src="/welcome1.jpg" className="pt-4 pb-0 pl-4" width={450}/>
 
-            <ul className="flex flex-col pl-12 pt-0 font-semibold space-y-4">
+            <ul className="flex flex-col pl-12 pt-0 font-semibold space-y-3">
                 <Link href="/" className="hover:underline">Home</Link>
                 <Link href="/login" className="hover:underline">Login</Link>
                 <Link href="/welcome" className="hover:underline">Welcome</Link>
@@ -16,6 +16,7 @@ function Sidebar(){
                 <Link href="/Weight" className="hover:underline">Weight</Link>
                 <Link href="/Age" className="hover:underline">Age</Link>
                 <Link href="/account" className="hover:underline">Profile</Link>
+                <Link href="/userinfo" className="hover:underline">Me</Link>
             </ul>
 
         </div>
