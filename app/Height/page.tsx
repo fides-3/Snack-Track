@@ -1,6 +1,7 @@
 "use client"
 import {useRouter} from 'next/navigation'
 import { useState } from "react";
+import WizardProgress from '@/components/WizardProgress';
 
 export default function Height() {
   const [unit, setUnit] = useState("M");
@@ -44,6 +45,7 @@ export default function Height() {
       <br></br>
       <form onSubmit={handleSubmit}>
     <div className=" relative rounded-full bg-white place-items-center mx-auto p-6 max-w-2xl  ">
+      <WizardProgress currentStep={4} totalSteps={6}  />
       <p className="font-semibold text-2xl "> 🔹How tall are you?</p>
     
     <div className="relative w-64 flex place-items-center border-b-2 border-black px-2 py-1 mx-auto focus-within:border-blue-700">
