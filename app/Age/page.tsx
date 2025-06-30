@@ -1,4 +1,5 @@
 "use client"
+import WizardProgress from '@/components/WizardProgress'
 import {useState} from 'react'
 import {useRouter} from 'next/navigation'
 
@@ -42,6 +43,7 @@ export default function Age() {
       <br></br>
       <form onSubmit={handleSubmit}>
     <div className=" relative rounded-full bg-white place-items-center mx-auto p-6 max-w-2xl  ">
+      <WizardProgress currentStep={6} totalSteps={6}  />
       <p className="font-semibold text-2xl "> 🔹What is your age?</p>
     
     <div className="relative w-64 flex place-items-center border-b-2 border-black px-2 py-1 mx-auto focus-within:border-blue-700">
