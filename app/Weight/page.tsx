@@ -21,7 +21,7 @@ export default function Weight() {
       setMessage("Please enter your weight");
       return;
     }
-     console.log("submitting weight",weight)
+    
 
      try{
     const res = await fetch("/api/me", {
