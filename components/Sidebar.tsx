@@ -7,7 +7,7 @@ function Sidebar(){
 
             <ul className="flex flex-col pl-12 pt-0 font-semibold space-y-3">
                 <Link href="/" className="hover:underline">Home</Link>
-                <Link href="/login" className="hover:underline">Login</Link>
+                <Link href="/signup" className="hover:underline">Signup</Link>
                 <Link href="/welcome" className="hover:underline">Welcome</Link>
                 <Link href="/Goal" className="hover:underline">Goals</Link>
                 <Link href="/Gender" className="hover:underline">Gender</Link>
