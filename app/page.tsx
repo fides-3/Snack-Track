@@ -1,138 +1,116 @@
-"use client"
 
-import{Mail,Eye,EyeOff} from "lucide-react";
+
+
+'use client';
+import { signIn } from "next-auth/react"
 import { useState } from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
+import { Mail, Eye, EyeOff } from "lucide-react";
 
+export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
-export default function Signup() {
-  const router=useRouter();
-  const[showPassword, setShowPassword]=useState(false);
-  const [email,setEmail]=useState("");
-  const[password,setPassword]=useState("");
-  const[message,setMessage]=useState("");
-
-  
-  const handleSubmit=async (e: React.FormEvent<HTMLFormElement>)=>{ 
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage('');
 
-    if (!email || !password) {
-  setMessage("Please fill in all fields");
-  return;
-}
-   
+    console.log("🔐 Attempting login with:", { email });
 
-    try{
-    const res=await fetch("/api/signup",{
-      method:"POST",
-      headers:{"Content-type":"application/json"},
-      body:JSON.stringify({email,password}),
-
-
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false
     });
 
-    const data=await res.json();
-    if (res.ok){
-       router.push('/welcome')
-    }
-    else{
-    setMessage(data.message);
-    }
-   
+    console.log("🔐 Login result:", res);
 
+    if (res?.ok) {
+      console.log("✅ Login successful");
+      router.push("/welcome");
+    } else {
+      console.log("❌ Login failed:", res?.error);
+      setMessage("Invalid email or password");
+    }
+    
+    setLoading(false);
+  };
 
-  
-  } catch(error){
-    console.error("Signup error:", error);
-    setMessage("Something went wrong. Please try again.");
-  }
- }
   return (
-    <div className="flex items-center justify-center   min-h-screen bg-white">
-      <form  onSubmit={handleSubmit} className="bg-white p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+    <div className=" flex justify-center min-h-screen bg-white items-center">
+      <form onSubmit={handleLogin} className="bg-white p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+         <div className="w-1/2 hidden md:block">
+         <img src="/welcome1.jpg" className="h-full w-full object-cover" />
+      </div>
+      <div className="w-full md:w-1/2 p-8 space-y-5">
+       <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+
       
-        <div className="w-1/2 hidden md:block">
-          <img src="/welcome1.jpg" className="h-full w-full object-cover" />
-      
+     
+       
         
-        </div>
-
-        {/* Heading */}
-        <div className="w-full md:w-1/2 p-8 space-y-5">
-        <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
-
-        {/* Email */}
-        <div className="mb-4 relative">
+         <div className="mb-4 relative">
           <label htmlFor="email" className="block text-gray-700 mb-1">
             Email
           </label>
-          
           <input
-          
-            type="email"
-            name="email"
             id="email"
-            className="w-full px-4 py-2 border mt-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={(e)=>setEmail(e.target.value)}
-          
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border px-4 py-2 w-full rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
           />
-          <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor pointer"><Mail size={16}/></span>
+          <span className="absolute right-3 top-10 text-gray-400">
+            <Mail size={16} />
+          </span>
         </div>
-
-        {/* Password */}
+        
         <div className="mb-4 relative">
           <label htmlFor="password" className="block text-gray-700 mb-1">
             Password
           </label>
-         
           <input
-            type={showPassword ? "text" : "password"}
-            name="password"
             id="password"
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={(e)=>setPassword(e.target.value)}
-            
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border px-4 py-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
-           onClick={() => setShowPassword(!showPassword)}> {showPassword ? <Eye size={0} /> :<EyeOff size={0} />}</span>
-      
-        </div>
-
-        {/* Remember me and Forgot password */}
-        <div className="flex items-center justify-between mb-6">
-          <label className="flex items-center space-x-2 text-sm text-gray-600">
-            <input type="checkbox" className="w-4 h-4 text-blue-500" />
-            <span>Remember me</span>
-          </label>
-          <a
-            href="#"
-            className="text-sm text-blue-500 hover:underline"
+          <span 
+            className="absolute right-3 top-10 text-gray-400 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
           >
-            Forgot password?
-          </a>
+            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+          </span>
         </div>
-
-        {/* Login button */}
-        <button
-          type="submit"
+        
+        <button 
+          type="submit" 
+        
           className="w-full mb-3 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300"
-        >
-          Sign Up
+        >Login
+        
         </button>
-
-        {message && (
-  <p className="text-center text-sm mt-2 text-red-500">{message}</p>
-)}
-
-        <p className="text-center">Already have an account?
-
-          <a href="/login" className="hover:underline transition duration-300 text-blue-500 py-2">Login</a>
-          </p>
-          </div>
+        
+        {message && <p className="text-red-500 mt-2 text-center">{message}</p>}
+        
+        <p className="text-center mt-4 text-sm">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-blue-500 hover:underline">
+            Sign up
+          </a>
+        </p>
+         </div>
       </form>
     </div>
   );
-
-
-
 }
