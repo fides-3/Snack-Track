@@ -92,6 +92,18 @@ export default function LoginPage() {
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </span>
         </div>
+          <div className="flex items-center justify-between mb-6">
+          <label className="flex items-center space-x-2 text-sm text-gray-600">
+            <input type="checkbox" className="w-4 h-4 text-blue-500" />
+            <span>Remember me</span>
+          </label>
+          <a
+            href="/reset-password"
+            className="text-sm text-blue-500 hover:underline"
+          >
+            Forgot password?
+          </a>
+        </div>
         
         <button 
           type="submit" 
