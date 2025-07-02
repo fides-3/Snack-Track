@@ -101,12 +101,7 @@ export default function Signup() {
             <input type="checkbox" className="w-4 h-4 text-blue-500" />
             <span>Remember me</span>
           </label>
-          <a
-            href="#"
-            className="text-sm text-blue-500 hover:underline"
-          >
-            Forgot password?
-          </a>
+         
         </div>
 
         {/* Login button */}
