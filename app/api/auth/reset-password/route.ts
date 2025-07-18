@@ -1,27 +1,40 @@
-import { prisma } from "@/lib/prisma";
-import { hash } from "bcryptjs";
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+
+const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
-    try{
   const { token, password } = await req.json();
 
-  const tokenRecord = await prisma.passwordResetToken.findUnique({ where: { token } });
-  if (!tokenRecord || tokenRecord.expiresAt < new Date()) {
-    return NextResponse.json({ message: "Invalid or expired token." }, { status: 400 });
+  if (!token || !password) {
+    return NextResponse.json({ message: 'Token and password are required' }, { status: 400 });
   }
 
-  const hashed = await hash(password, 10);
-  await prisma.user.update({
-    where: { id: tokenRecord.userId },
-    data: { password: hashed },
+  const user = await prisma.user.findFirst({
+    where: {
+      resetToken: token,
+      resetTokenExpiry: {
+        gte: new Date(),
+      },
+    },
   });
 
-  await prisma.passwordResetToken.delete({ where: { token } });
+  if (!user) {
+    return NextResponse.json({ message: 'Invalid or expired token' }, { status: 400 });
+  }
 
-  return NextResponse.json({ message: "Password updated." });
-}catch(error){
-    console.error("Reset Password error:",error)
-    return NextResponse.json({message:"server error"},{status :500})
-}
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      password: hashedPassword,
+      // set to null so that they cannot be reused by another person
+      resetToken: null,
+      resetTokenExpiry: null,
+    },
+  });
+
+  return NextResponse.json({ message: 'Password updated successfully' });
 }
