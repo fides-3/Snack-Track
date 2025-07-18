@@ -98,7 +98,7 @@ export default function LoginPage() {
             <span>Remember me</span>
           </label>
           <a
-            href="/reset-password"
+            href="/forgot-password"
             className="text-sm text-blue-500 hover:underline"
           >
             Forgot password?
