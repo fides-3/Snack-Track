@@ -25,4 +25,31 @@ export async function POST(req:Request){
             resetTokenExpiry :expiry,
         },
     })
+    const resetUrl=`{process.env.NEXT_PUBLIC_BASE_URL}/reset-password?token=${token}`
+    const transporter=nodemailer.createTransport({
+        service:"gmail",
+        auth:{
+            user:process.env.EMAIL_USER,
+            pass:process.env.EMAIL_PASS,
+        },
+    })
+    const mailOptions={
+        from:`"Snack $ Track<${process.env.EMAIL_USER}>`,
+        TO:email,
+        subject:"Password Reset",
+        html:`<p>Click the link below to reset your password</p>
+              <p><a href="${resetUrl}">${resetUrl}</a></p>
+              <p>This link will expire in one hour</p>`
+    
+    }
+    try{
+        await transporter.sendMail(mailOptions);
+        return NextResponse.json({message:"Reset link sent to mail"})
+    }catch(err){
+        console.error(err);
+        return NextResponse.json({message:"Failed to send email"},{status:500})
+
+    }
+    
+
 }
