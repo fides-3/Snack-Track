@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 export default function MainLayout({ children }: { children: React.ReactNode }) {
    
     const pathname = usePathname();
-    const noSidebarRoutes = ["/", "/signup"];
+    const noSidebarRoutes = ["/", "/signup","/forgot-password"];
     const hideSidebar = noSidebarRoutes.includes(pathname);
 
     return (
