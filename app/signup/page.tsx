@@ -33,7 +33,7 @@ export default function Signup() {
 
     const data=await res.json();
     if (res.ok){
-       router.push('/welcome')
+       router.push('/')
     }
     else{
     setMessage(data.message);
