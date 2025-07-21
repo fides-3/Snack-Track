@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Mail, Eye, EyeOff } from "lucide-react";
+// import { Mail, Eye, EyeOff } from "lucide-react";
 
 
 export default function forgotPassword() {

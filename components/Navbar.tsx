@@ -4,10 +4,10 @@ import Link from "next/link";
 import { User } from "lucide-react"; 
 import{useSession} from "next-auth/react";
 
-type UserType = {
-  email: string;
-  image?: string;
-};
+// type UserType = {
+//   email: string;
+//   image?: string;
+// };
 
 export default function Navbar() {
   // const [user, setUser] = useState<UserType | null>(null);
