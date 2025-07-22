@@ -113,6 +113,7 @@ export default function Weight() {
         <button className="bg-blue-600   text-white hover:bg-blue-700 font-semibold px-6 py-2 shadow-md transition duration-300 rounded-lg flex-row-reverse  " type="submit">
           Next
         </button>
+         {message && <p className="text-red-500 mt-2 text-center">{message}</p>}
     
     </div>
 
