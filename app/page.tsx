@@ -13,11 +13,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+  
     setMessage('');
 
     console.log("🔐 Attempting login with:", { email });
@@ -38,7 +38,7 @@ export default function LoginPage() {
       setMessage("Invalid email or password");
     }
     
-    setLoading(false);
+  
   };
 
   return (
