@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import BottomNav from '@/components/BottomNav'
 
 export default function UserInfoPage() {
   const { data: session } = useSession();
@@ -21,8 +22,8 @@ export default function UserInfoPage() {
   if (!info) return <p>Loading...</p>;
 
   return (
-    <div className=" bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen flex items-center justify-center px-4 ">
-      <div className="bg-white bg-opacity-90 backdrop-blur-md rounded-2xl shadow-lg max-w-md w-full p-8 space-y-4 text-gray-800 text-left">
+    <div className=" bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen flex  items-center justify-center px-4 ">
+      <div className="bg-white bg-opacity-90 backdrop-blur-md rounded-2xl mt-0 shadow-lg max-w-sm w-full p-8 space-y-4 text-gray-800 text-left">
       <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Your Info</h2>
       <p><strong>Email:</strong> {info.email}</p>
       <p><strong>Age:</strong> {info.age}</p>
@@ -32,6 +33,9 @@ export default function UserInfoPage() {
       <p><strong>Activity:</strong> {info.activity}</p>
       <p><strong>Goal:</strong> {info.goal}</p>
       </div>
+
+      <BottomNav/>
+
     </div>
   );
 }
