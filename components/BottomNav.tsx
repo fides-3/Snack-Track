@@ -6,7 +6,7 @@ export default function BottomNav() {
   return (
     <div className="fixed bottom-0 left-48 right-0 bg-blue-100 flex justify-around items-center h-20 rounded-2xl shadow-md z-50">
       {/* Recipes */}
-      <Link href="/recipes" className="flex flex-col items-center   text-blue-500 hover:text-blue-800">
+      <Link href="/Recipes" className="flex flex-col items-center   text-blue-500 hover:text-blue-800">
         <BookOpen className="w-6 h-6" />
         <span className="text-sm">Recipes</span>
       </Link>
