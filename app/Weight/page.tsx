@@ -48,12 +48,12 @@ export default function Weight() {
 
 
   return (
-    <div className="min-h-screen bg-[url('/backgroundimage.jpg')] bg-cover bg-center p-8 ">
+    <div className="min-h-screen bg-[url('/backgroundimage.jpg')]  dark:bg-[url('/darkbg.jpg')] bg-cover bg-center p-8 ">
       <br></br>
       <form onSubmit={handleSubmit}>
-    <div className=" relative rounded-full bg-white place-items-center mx-auto p-6 max-w-2xl  ">
+    <div className=" relative rounded-full bg-white dark:bg-black place-items-center mx-auto p-6 max-w-2xl  ">
       <WizardProgress currentStep={5} totalSteps={6}  />
-      <p className="font-semibold text-2xl "> 🔹What is your weight?</p>
+      <p className="font-semibold text-2xl text-black dark:text-white"> 🔹What is your weight?</p>
     
     <div className="relative w-64 flex place-items-center border-b-2 border-black px-2 py-1 mx-auto focus-within:border-blue-700">
       {/* Input Field */}
@@ -61,7 +61,7 @@ export default function Weight() {
         type="number"
         placeholder=" "
         value={weight}
-        className="w-full outline-none  bg-transparent text-lg"
+        className="w-full outline-none   text-lg"
         onChange={(e)=>setWeight(e.target.value)}
       />
 
@@ -70,9 +70,9 @@ export default function Weight() {
         className="flex items-center text-black cursor-pointer relative"
         onClick={() => setShowUnits(!showUnits)}
       >
-        <span className="ml-2">{unit}</span>
+        <span className="ml-2 text-black dark:text-white">{unit}</span>
         <svg
-          className="ml-1 w-3 h-3 text-black"
+          className="ml-1 w-3 h-3 text-black dark:text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ export default function Weight() {
                   setUnit(u);
                   setShowUnits(false);
                 }}
-                className="px-3 py-1 hover:bg-green-100 cursor-pointer"
+                className="px-3 py-1 hover:bg-green-100  cursor-pointer"
               >
                 {u}
               </li>

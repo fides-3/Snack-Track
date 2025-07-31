@@ -41,12 +41,12 @@ export default function Height() {
   <br></br>
 
   return (
-    <div className="min-h-screen bg-[url('/backgroundimage.jpg')] bg-cover bg-center p-8 ">
+    <div className="min-h-screen bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center p-8 ">
       <br></br>
       <form onSubmit={handleSubmit}>
-    <div className=" relative rounded-full bg-white place-items-center mx-auto p-6 max-w-2xl  ">
+    <div className=" relative rounded-full bg-white dark:bg-black place-items-center mx-auto p-6 max-w-2xl  ">
       <WizardProgress currentStep={4} totalSteps={6}  />
-      <p className="font-semibold text-2xl "> 🔹How tall are you?</p>
+      <p className="font-semibold text-2xl text-black dark:text-white "> 🔹How tall are you?</p>
     
     <div className="relative w-64 flex place-items-center border-b-2 border-black px-2 py-1 mx-auto focus-within:border-blue-700">
       {/* Input Field */}
@@ -55,17 +55,17 @@ export default function Height() {
         placeholder=" "
         value={height}
         onChange={(e)=>setHeight(e.target.value)}
-        className="w-full outline-none bg-transparent text-lg"
+        className="w-full outline-none  text-lg"
       />
 
       {/* Unit Display */}
       <div
-        className="flex items-center text-black cursor-pointer relative"
+        className="flex items-center text-black dark:text-white cursor-pointer relative"
         onClick={() => setShowUnits(!showUnits)}
       >
         <span className="ml-2">{unit}</span>
         <svg
-          className="ml-1 w-3 h-3 text-black"
+          className="ml-1 w-3 h-3 dark:text-white text-black"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -80,7 +80,7 @@ export default function Height() {
 
         {/* Dropdown */}
         {showUnits && (
-          <ul className="absolute top-6 right-0 bg-white border rounded shadow-md z-10">
+          <ul className="absolute top-6 right-0 bg-white dark:bg-black text-black dark:text-white border rounded shadow-md z-10">
             {units.map((u) => (
               <li
                 key={u}

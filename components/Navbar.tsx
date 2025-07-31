@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { User } from "lucide-react"; 
 import{useSession} from "next-auth/react";
+import {ThemeToggle} from "../app/theme-toggle"
+
 
 // type UserType = {
 //   email: string;
@@ -24,8 +26,11 @@ export default function Navbar() {
   // }, []);
 
   return (
-    <div className="w-full  flex justify-between p-0 m-0 items-center bg-white">
-      <Link href="/" className="text-xl font-bold text-blue-600"></Link>
+    <div className="w-full  flex justify-between p-0 m-0 items-center dark:bg-black bg-white">
+      {/* <Link href="/" className="text-xl font-bold text-blue-600"></Link> */}
+      <div className="bg-white dark:bg-black text-black dark:text-white flex justify-between">
+      <ThemeToggle/>
+      </div>
 
 
       {status==="authenticated"? (
@@ -33,7 +38,7 @@ export default function Navbar() {
           {session.user?.image ? (
             <img src={session.user.image} alt="Profile" className="w-8 h-8 rounded-full" />
           ) : (
-            <User className="w-6 h-6 text-gray-600" />
+            <User className="w-6 h-6 text-gray-600 dark:text-white" />
           )}
         </Link>
       ) : (

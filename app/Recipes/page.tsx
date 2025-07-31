@@ -49,7 +49,7 @@ const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
 
     return(
 
-      <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center h-screen ">
+      <div className="bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center h-screen ">
        <div className="relative w-full pt-20  max-w-md mt-0 flex justify-center items-center   mx-auto">
         <div className='relative w-full '>
       <Search className="absolute left-3  top-1/2 transform -translate-y-1/2 w-5 h-5" />
@@ -57,20 +57,20 @@ const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
         type="text"
         value={query}
         placeholder="Search for recipes"
-        className="w-full pl-10 py-2 border border-blue-300 shadow-2xl  rounded-lg text-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-600"
+        className="w-full pl-10 py-2 border border-blue-300 shadow-2xl  rounded-lg text-gray-800 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-600"
         onChange={(e)=>setQuery(e.target.value)}
       />
       </div>
       </div>
       <div className='flex items-center pt-4 justify-center'>
-      <button onClick={handleSearch} className='text-white hover:bg-blue-500  bg-blue-400 text-sm w-34 font-semibold rounded-lg px-6 py-2'>
+      <button onClick={handleSearch} className='text-white  hover:bg-blue-500  bg-blue-400 text-sm w-34 font-semibold rounded-lg px-6 py-2'>
         SEARCH
       </button>
       </div>
 
       {error && <p className='text-red-400 mt -4font-semibold text-sm'>{error}</p>}
 
-      {loading && <div className='text-white mt-4 animate-pulse '>Loading recipes...</div>}
+      {loading && <div className='text-blue-950 mt-4 text-center animate-pulse '>Loading recipes...</div>}
 
       {!loading && results.length>0 &&(
         <div className='mt-6 space-y-4 '>
@@ -113,7 +113,7 @@ const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
           
         
           {!loading && query && results.length === 0 && !error && (
-          <p className="mt-4 text-white text-center">No recipes found for "{query}".</p>
+          <p className="mt-4 text-blue-800 text-center">No recipes found for "{query}".</p>
         )}
       <BottomNav/>
       

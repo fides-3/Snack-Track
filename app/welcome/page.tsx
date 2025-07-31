@@ -1,6 +1,6 @@
 function Welcome(){
     return(
-    <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center pt-0   min-h-screen ">
+    <div className="bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')]  bg-cover bg-center pt-0   min-h-screen ">
         <div className="items-center justify-center      ">
          <div className="flex flex-col items-center  justify-center text-center  space-y-5">
           
