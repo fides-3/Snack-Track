@@ -39,12 +39,12 @@ export default function Age() {
 
 
   return (
-    <div className="min-h-screen bg-[url('/backgroundimage.jpg')] bg-cover bg-center p-8 ">
+    <div className="min-h-screen bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center p-8 ">
       <br></br>
       <form onSubmit={handleSubmit}>
-    <div className=" relative rounded-full bg-white place-items-center mx-auto p-6 max-w-2xl  ">
+    <div className=" relative rounded-full bg-white dark:bg-black place-items-center mx-auto p-6 max-w-2xl  ">
       <WizardProgress currentStep={6} totalSteps={6}  />
-      <p className="font-semibold text-2xl "> 🔹What is your age?</p>
+      <p className="font-semibold text-2xl text-black dark:text-white "> 🔹What is your age?</p>
     
     <div className="relative w-64 flex place-items-center border-b-2 border-black px-2 py-1 mx-auto focus-within:border-blue-700">
       {/* Input Field */}
@@ -53,9 +53,9 @@ export default function Age() {
         placeholder=" "
         value={age}
         onChange={(e)=>setAge(e.target.value)}
-        className="w-full outline-none bg-transparent text-lg"
+        className="w-full outline-none  text-lg"
       />
-       <span className="ml-2">Years</span>
+       <span className="ml-2 dark:text-white">Years</span>
       </div>
        
       
