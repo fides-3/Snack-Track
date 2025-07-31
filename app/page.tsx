@@ -6,6 +6,8 @@ import { signIn } from "next-auth/react"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Mail, Eye, EyeOff } from "lucide-react";
+// import { Button } from "@/components/ui/button";
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -42,7 +44,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className=" flex justify-center min-h-screen bg-white items-center">
+   
+    <div className=" flex justify-center min-h-screen bg-white dark:bg-black text-black dark:text-white transition-all duration-300 items-center">
+     
       <form onSubmit={handleLogin} className="bg-white p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
          <div className="w-1/2 hidden md:block">
          <img src="/welcome1.jpg" className="h-full w-full object-cover" />
@@ -122,6 +126,11 @@ export default function LoginPage() {
           </a>
         </p>
          </div>
+         {/* <div className="space-x-2">
+          <Button>Button 1</Button>
+          <Button variant="secondary">Button 2</Button>
+          <ThemeToggle/>
+         </div> */}
       </form>
     </div>
   );
