@@ -39,14 +39,14 @@ function Gender(){
         
     return(
         
-        <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center min-h-screen p-8">
+        <div className="bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center min-h-screen p-8">
             <form onSubmit={handleSubmit}>
-            <div className=" relative max-w-2xl rounded-full bg-white place-items-center mx-auto p-6    ">
+            <div className=" relative max-w-2xl rounded-full  bg-white  dark:bg-black place-items-center mx-auto p-6    ">
               <WizardProgress currentStep={2} totalSteps={6}  />
-        <p className='font-semibold text-2xl'>🔹What is your gender?</p>
+        <p className='font-semibold text-2xl text-black dark:text-white'>🔹What is your gender?</p>
         <br></br>
         <div className="flex-col space-y-4 flex justify-center">
-            <label className="flex mb-2 items-center">
+            <label className="flex mb-2  text-black dark:text-white items-center">
                 <input type="radio" name="Gender" value="Male" 
                 checked={selectedGender==="Male"} onChange={(e)=>setSelectedGender(e.target.value)}/>
                 Male👨
