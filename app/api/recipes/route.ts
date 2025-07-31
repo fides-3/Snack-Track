@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   try {
     // 1. Fetch basic search
     const searchRes = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=7&apiKey=${API_KEY}`
+      `https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=5&apiKey=${API_KEY}`
     );
 
     // Handle bad response
