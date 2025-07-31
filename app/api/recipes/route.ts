@@ -1,42 +1,4 @@
-// import {NextResponse} from 'next/server'
-// export async function GET (req:Request){
-//     const {searchParams}=new URL(req.url)
-//     const query=searchParams.get('query')
-//     if(!query){
-//         return NextResponse.json({error:'A query is needed here'},{status:400})
-//     }
-//     const apiKey=process.env.SPOONACULAR_API_KEY;
-//     const apiUrl=`https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=10&apiKey=${apiKey}`
-//     try{
-//         const res=await fetch(apiUrl)
-//         const data=await res.json()
-//         return NextResponse.json(data)
-    
-//     }catch(err){
-//         console.error('API error:',err)
-//         return NextResponse.json({error:'Something went wrong'},{status:500})
-//     }
-// }    
-
-// import {NextResponse} from 'next/server'
-// export async function GET (req:Request){
-//     const {searchParams}=new URL(req.url)
-//     const query=searchParams.get('query')
-//     if(!query){
-//         return NextResponse.json({error:'A query is needed here'},{status:400})
-//     }
-//     const apiKey=process.env.SPOONACULAR_API_KEY;
-//     const apiUrl=`https://api.spoonacular.com/recipes/complexSearch?query=${query}&number=10&apiKey=${apiKey}`
-//     try{
-//         const res=await fetch(apiUrl)
-//         const data=await res.json()
-//         return NextResponse.json(data)
-    
-//     }catch(err){
-//         console.error('API error:',err)
-//         return NextResponse.json({error:'Something went wrong'},{status:500})
-//     }
-// }    
+ 
 
 import { NextResponse } from 'next/server';
 
@@ -77,7 +39,7 @@ export async function GET(req: Request) {
           const errText = await infoRes.text();
           console.warn(`Failed to fetch recipe info for ID ${recipe.id}:`);
           console.warn(`🔗 URL: https://api.spoonacular.com/recipes/${recipe.id}/information?apiKey=${API_KEY}`);
-          console.warn(`🔎 Response:`, errText);
+          console.warn('🔎 Response:', errText);
           return null; // Skip this recipe
         }
 
