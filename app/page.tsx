@@ -47,7 +47,7 @@ export default function LoginPage() {
    
     <div className=" flex justify-center min-h-screen bg-white dark:bg-black text-black dark:text-white transition-all duration-300 items-center">
      
-      <form onSubmit={handleLogin} className="bg-white p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+      <form onSubmit={handleLogin} className="bg-white dark:bg-[url('/darkbg.jpg')] p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
          <div className="w-1/2 hidden md:block">
          <img src="/welcome1.jpg" className="h-full w-full object-cover" />
       </div>
@@ -119,7 +119,7 @@ export default function LoginPage() {
         
         {message && <p className="text-red-500 mt-2 text-center">{message}</p>}
         
-        <p className="text-center mt-4 text-sm">
+        <p className="text-center text-black dark:text-white mt-4 text-sm">
           Don't have an account?{" "}
           <a href="/signup" className="text-blue-500 hover:underline">
             Sign up
