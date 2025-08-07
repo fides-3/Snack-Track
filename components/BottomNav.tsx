@@ -12,7 +12,7 @@ export default function BottomNav() {
       </Link>
 
       {/* Diary */}
-      <Link href="/diary" className=" text-blue-500   flex flex-col items-center hover:text-blue-800">
+      <Link href="/Diary" className=" text-blue-500   flex flex-col items-center hover:text-blue-800">
         <PieChart className="w-6 h-6" />
         <span className="text-sm ">Diary</span>
       </Link>
