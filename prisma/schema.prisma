@@ -22,13 +22,26 @@ model User {
   image       String?
   password    String
   age         Int?
-  weight      Float?
-  height      Float?
-  gender      String?
-  activity    String?
-  goal        String?
-  createdAt   DateTime @default(now())
-  resetToken  String?
+  weight           Float?
+  height           Float?
+  gender           String?
+  activity         String?
+  goal             String?
+  createdAt        DateTime @default(now())
+  resetToken       String?
   resetTokenExpiry DateTime?
+  // reference to diary model
+  DiaryEntries     Diary[]
+}
+model Diary{
+  id        Int       @id @default(autoincrement())
+  // foreign key
+  userId    String
+  date      DateTime
+  food      String
+  calories  Float
+  createdAt DateTime  @default(now())
+
+  user      User           @relation(fields:[userId],references:[id])
 }
 
