@@ -57,7 +57,9 @@ export default function Diary(){
              </button>
               </div>
               <div className="flex items-center justify-center">
-             {error && <p className="text-blue-100">{error}</p>}
+             {error && <p className="text-blue-400">{error}</p>}
+             
+             {loading && <p className="text-black font-semibold">Loading calories....</p>}
              </div>
             
              {calories !=null &&(
