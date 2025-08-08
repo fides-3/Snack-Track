@@ -37,10 +37,10 @@ model Diary{
   id        Int       @id @default(autoincrement())
   // foreign key
   userId    String
-  date      DateTime
-  food      String
-  calories  Float
-  createdAt DateTime  @default(now())
+  date      DateTime?
+  food      String?
+  calories  Float?
+  createdAt DateTime?  @default(now())
 
   user      User           @relation(fields:[userId],references:[id])
 }
