@@ -16,13 +16,15 @@ export default function CalendarPicker(){
         const data=await res.json()
         setEntries(data)
         setShowEntries(true)
+
     }
 
     return(
         <div className='relative inline-block text-left'>
             <button onClick={()=>{
                  setShowCalendar((prev:boolean)=>!prev)
-                 setShowEntries(false)
+                
+            
             }}
                 className='p-2 rounded-full hover:bg-slate-600'>
                 <LuCalendarDays className='w-6 h-6'/>
@@ -33,9 +35,19 @@ export default function CalendarPicker(){
                     <DatePicker
                     selected={startDate}
                     onChange={(date)=>{
+
+                        if (!date) return
+
+                        if(startDate&&date.toDateString()===startDate.toDateString()){
+                            setShowEntries(false)
+                        }
+                        else{
                         setStartDate(date!)
                         setShowCalendar(false)
                         fetchEntriesfordate(date!)
+                        }
+                        
+                    setShowCalendar(false)
                        
                     }}
                     inline
