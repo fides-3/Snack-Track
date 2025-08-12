@@ -16,7 +16,7 @@ datasource db {
 
 model User {
   id          String   @id @default(uuid())
-  email       String @unique
+  email       String   @unique
   phone       String?
   location    String?
   image       String?
@@ -32,6 +32,7 @@ model User {
   resetTokenExpiry DateTime?
   // reference to diary model
   DiaryEntries     Diary[]
+  WaterIntakeEntries WaterIntake[]      
 }
 model Diary{
   id        Int       @id @default(autoincrement())
@@ -45,3 +46,11 @@ model Diary{
   user      User           @relation(fields:[userId],references:[id])
 }
 
+model WaterIntake{
+  id              Int      @id @default(autoincrement())
+  userId          String    @unique
+  amount          Float?
+  lastTime        String?
+  date            DateTime?
+  user            User    @relation(fields:[userId],references:[id])   
+}

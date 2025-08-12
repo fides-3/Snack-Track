@@ -1,82 +1,83 @@
-"use client"
-import CalendarPicker from "@/components/CalendarPicker"
-import{useState} from 'react'
-export default function Diary(){
-    const[food,setFood]=useState("")
-    const [calories,setCalories]=useState<number |null >(null)
-    const[loading,setLoading]=useState(false)
-    const[error,setError]=useState("")
+"use client";
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 
-    const handleCheckCalories=async()=>{
-        if (!food) return
-        
-        setLoading(true)
-        setError("")
-        
-        try{
-            const res=await fetch('/api/diary',{
-                method:'POST',
-                headers:{'Content-type':'application/json'},
-                body:JSON.stringify({food}),
+export default function Diary() {
 
-            })
-            const data=await res.json()
+  const [water, setWater] = useState(1.9); // Liters
+  const waterGoal = 2.5;
 
-            if(res.ok){
-                setCalories (data.calories)
-            }
-            else{
-                setError (data.error||'Something went wrong')
-            }
-        }catch(error){
-            setError('Failed to fetch calories')
-        }finally{
-            setLoading(false)
-        }
-    }
-   
+  const meals = [
+    { name: "Breakfast", calories: 531, time: "10:45 AM" },
+    { name: "Lunch", calories: 1024, time: "3:45 PM" },
+    {name:"supper",calories:1378,time:"7:10PM"}
+  ];
 
+  const waterPercent = Math.round((water / waterGoal) * 100);
 
+  return (
+    <div className="p-4 max-w-md mx-auto space-y-6 font-sans bg-gray-50 min-h-screen">
+      
+      
+      
 
-    return(
-        <div className="bg-[url('/backgroundimage.jpg')] bg-cover bg-center flex items-center justify-center min-h-screen ">
-            <div className="rounded-2xl shadow-lg  bg-white relative max-w-xl p-8 mx-auto w-full">
-                <div className="top-2 right-2 absolute ">
-             <CalendarPicker/>
-               </div>
-             <h1 className="text-center font-semibold text-blue-500"><u>DAILY DIARY</u></h1> 
+      {/* Water Intake */}
+      <div className="bg-white rounded-xl p-4 shadow-sm">
+        <h2 className="text-md font-semibold mb-4">Water Intake</h2>
+        <div className="flex items-center justify-between mb-2">
+          <span>
+            <span className="font-bold">{water.toFixed(1)}</span> / {waterGoal}L
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setWater(Math.min(water + 0.1, waterGoal))}
+            className="bg-gray-100 rounded-full p-2"
+          >
+            <Plus className="w-5 h-5" />
+          </button>
 
-             <div className="mt-6 space-y-4  ">
-                <input type="text" value={food} onChange={(e)=>setFood(e.target.value)} placeholder="Enter food taken..."
-                className="rounded-xl w-full border p-2 border-gray-600"/>
-                <div className="flex items-center justify-center pt-4">
+          {/* Water Glass */}
+          <div className="relative h-20 w-10 rounded-full bg-gray-200 overflow-hidden flex flex-col justify-end">
+            <div
+              className="absolute bottom-0 w-full bg-gradient-to-t from-blue-400 to-blue-300 transition-all duration-300"
+              style={{ height: `${waterPercent}%` }}
+            ></div>
+          </div>
 
-                 <button onClick={handleCheckCalories} className="px-6 py-2 text-center rounded-lg text-white font-semibold bg-blue-600 animate-pulse">
-                SUBMIT
+          <button
+            onClick={() => setWater(Math.max(water - 0.1, 0))}
+            className="bg-gray-100 rounded-full p-2"
+          >
+            <Minus className="w-5 h-5" />
+          </button>
 
-             </button>
+          <span className="text-blue-500 font-medium">{waterPercent}%</span>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">Last time 10:45 AM</p>
+      </div>
+
+      {/* Meals */}
+      <div className="bg-white rounded-xl p-4 shadow-sm">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-md font-semibold">Meals</h2>
+          <button className="text-lg text-gray-500">+</button>
+        </div>
+        <div className="space-y-4">
+          {meals.map((meal, i) => (
+            <div key={i} className="flex justify-between items-center">
+              <div>
+                <p className="font-medium">{meal.name}</p>
+                <p className="text-sm text-gray-400">{meal.time}</p>
               </div>
-              <div className="flex items-center justify-center">
-             {error && <p className="text-blue-400">{error}</p>}
-             
-             {loading && <p className="text-black font-semibold">Loading calories....</p>}
-             </div>
-            
-             {calories !=null &&(
-                <p className="text-black">Estimated Calories:{calories}</p>           
-                  )}
-                  
-            
-
-             </div>
-            
+              <p className="font-semibold">{meal.calories} Cal</p>
             </div>
-
-
-            
-
+          ))}
         </div>
 
+      </div>
+    </div>
 
-    )
+  );
 }
+

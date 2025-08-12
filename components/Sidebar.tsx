@@ -11,9 +11,10 @@ import { FaWeight } from "react-icons/fa";
 import { FaRegHourglass } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { CiFaceSmile } from "react-icons/ci";
+import { LiaQuestionSolid } from "react-icons/lia";
 function Sidebar(){
     return(
-        <div className="w-36 fixed  left-0 top-16  bg-white dark:bg-black  dark:text-white  text-black  h-screen">
+        <div className="w-36 fixed  left-0 top-10  bg-white dark:bg-black  dark:text-white  text-black  h-screen">
 
             {/* <img src="/welcome1.jpg " className="pt-4 pb-0 pl-4  " width={450}/> */}
             
@@ -63,6 +64,11 @@ function Sidebar(){
                 <div className="flex items-center border-b border-gray-500 ">
                     <CiFaceSmile className="w-5 h-5 space-x-2"></CiFaceSmile>
                 <Link href="/userinfo">Me</Link>
+                </div>
+                <div className="flex items-center border-b border-gray-500">
+                    <LiaQuestionSolid className="w-5 h-5 space-x-2"></LiaQuestionSolid>
+                <Link href="/chatbot">Questions</Link>    
+
                 </div>
             </ul>
            </div>
