@@ -12,7 +12,7 @@ export default function CalendarPicker(){
 
     const fetchEntriesfordate=async(date:Date)=>{
         const formattedDate=date.toISOString().split('T')[0]
-        const res=await fetch(`api/diary?date=${formattedDate}`)
+        const res=await fetch(`api/calories?date=${formattedDate}`)
         const data=await res.json()
         setEntries(data)
         setShowEntries(true)
