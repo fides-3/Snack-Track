@@ -50,7 +50,7 @@ model WaterIntake{
   id              Int      @id @default(autoincrement())
   userId          String    @unique
   amount          Float?
-  lastTime        String?
+  lastTime        DateTime?
   date            DateTime?
   user            User    @relation(fields:[userId],references:[id])   
 }
