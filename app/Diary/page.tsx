@@ -2,19 +2,47 @@
 
 import { useEffect, useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import Link from 'next/link'
+import CalendarPicker from '@/components/CalendarPicker'
+import BottomNav from "@/components/BottomNav";
+// import Link from 'next/link'
 
 export default function Diary() {
   // Start with null so we know when data hasn't loaded yet
   const [water, setWater] = useState<number | null>(null);
-  const [lastTime, setLastTime] = useState<string>("");
+  const [lastTime, setLastTime] = useState("");
   const waterGoal = 2.5;
+  const [food,setFood]=useState("")
+  const [calories,setCalories]=useState("")
+  const[message,setMessage]=useState("")
+  
 
-  const meals = [
-    { name: "Breakfast", calories: 531, time: "10:45 AM" },
-    { name: "Lunch", calories: 1024, time: "3:45 PM" },
-    { name: "Supper", calories: 1378, time: "7:10 PM" },
-  ];
+
+
+const handleSubmit=async(e: React.FormEvent)=>{
+  e.preventDefault();
+  try{
+  const res=await fetch('api/calories',{
+    method:'POST',
+    headers:{'Content-type':'application/json'},
+    body:JSON.stringify({
+      food,
+      calories,
+
+    })
+  })
+  const data=await res.json()
+  if(res.ok){
+    setCalories(data.calories)
+  }
+  else{
+    alert(data.error ||"Error saving entry")
+  }
+  }catch(err){
+    console.error({'API error':err})
+  }
+}
+
+
 
   const waterPercent =
     water !== null ? Math.round((water / waterGoal) * 100) : 0;
@@ -29,7 +57,7 @@ export default function Diary() {
         if (!res.ok) throw new Error("Failed to fetch water data");
         const data = await res.json();
 
-        setWater(data.amount ?? 0);
+        setWater(data.amount );
         if (data.lastTime) {
           const time = new Date(data.lastTime).toLocaleTimeString([], {
             hour: "2-digit",
@@ -91,16 +119,17 @@ export default function Diary() {
   }
 
   return (
-    <div className="p-4 max-w-md mx-auto space-y-6 font-sans bg-gray-50 min-h-screen">
+    <div className=" bg-[url('/backgroundimage.jpg')]  bg-cover bg-center    min-h-screen ">
       {/* Water Intake */}
-      <div className="bg-white rounded-xl p-4 shadow-sm">
-        <h2 className="text-md font-semibold mb-4">Water Intake</h2>
+     <div className="   p-4  flex  items-center justify-center gap-4">
+      <div className="bg-white rounded-xl p-4   w-full h-96 space-y-8 shadow-xl">
+        <h2 className="text-md  text-center  font-semibold mb-4"><u>Water Intake</u></h2>
         <div className="flex items-center justify-between mb-2">
           <span>
-            <span className="font-bold">{water.toFixed(1)}</span> / {waterGoal}L
+            <span className="font-bold text-center">{water.toFixed(1)}</span> / {waterGoal}L
           </span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center gap-8">
           <button
             onClick={handleIncrease}
             className="bg-gray-100 rounded-full p-2"
@@ -125,18 +154,18 @@ export default function Diary() {
 
           <span className="text-blue-500 font-medium">{waterPercent}%</span>
         </div>
-        <p className="text-xs text-gray-400 mt-2">
+        <p className="text-xs text-gray-600  mt-6">
           Last Time {lastTime || "--:--"}
         </p>
       </div>
 
       {/* Meals */}
-      <div className="bg-white rounded-xl p-4 shadow-sm">
-        <div className="flex justify-between items-center mb-4">
+      
+        {/* <div className="flex justify-between items-center mb-4">
           <h2 className="text-md font-semibold">Meals</h2>
           <button className="text-lg text-gray-500">+</button>
-        </div>
-        <div className="space-y-4">
+        </div> */}
+        {/* <div className="space-y-4">
           {meals.map((meal, i) => (
             <div key={i} className="flex justify-between items-center">
               <div>
@@ -150,8 +179,48 @@ export default function Diary() {
               <p className="font-semibold">{meal.calories} Cal</p>
             </div>
           ))}
-        </div>
+        </div> */}
+
+
+        <div className="w-full  bg-white/90 h-96 space-y-8 backdrop-blur-md rounded-2xl shadow-xl p-8">
+              <div className='absolute top-0 right-0'>
+                <CalendarPicker/>
+              </div>
+                
+                {/* Header */}
+                <h2 className="text-center text-blue-500 font-medium text-xl mb-6 underline">
+                  DAILY DIARY
+                </h2>
+        
+                {/* Input */}
+                <input
+                  type="text"
+                  value={food}
+                  placeholder="Enter the food taken..."
+                  onChange={(e)=>setFood(e.target.value)}
+                  className="w-full p-3 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 text-center"
+                />
+              
+        
+        
+                {/* Button */}
+                <div className='flex items-center justify-center'>
+                <button onClick={handleSubmit}
+                  className=" px-6 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-all duration-200 font-semibold shadow-md"
+                >
+                  SUBMIT
+                </button>
+                <p>{message}</p>
+                
+                </div>
+                <div className='flex mt-4 items-center justify-center'>
+                <p className='text-center font-semibold'>Estimated calories:{calories}cal</p>
+                </div>
+              </div>
+
+     </div>
+      <BottomNav/>
       </div>
-    </div>
+  
   );
 }
