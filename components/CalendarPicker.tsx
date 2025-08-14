@@ -9,6 +9,7 @@ export default function CalendarPicker(){
     const[showCalendar,setShowCalendar]=useState<boolean>(false)
     const[entries,setEntries]=useState<any[]>([])
     const[showEntries,setShowEntries]=useState<boolean>(false)
+    
 
     const fetchEntriesfordate=async(date:Date)=>{
         const formattedDate=date.toISOString().split('T')[0]
@@ -18,6 +19,7 @@ export default function CalendarPicker(){
         setShowEntries(true)
 
     }
+    
 
     return(
         <div className='relative inline-block text-left'>
@@ -71,6 +73,7 @@ export default function CalendarPicker(){
                             ))}
 
                         </ul>
+                
                     ):(
                         <p className='text-blue-500'>No entries for this date</p>
                         
