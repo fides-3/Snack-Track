@@ -1,6 +1,7 @@
 
 import Link from "next/link";
-import { BookOpen, PieChart, BarChart2 } from "lucide-react";
+import { BookOpen, PieChart} from "lucide-react";
+import { LiaQuestionSolid } from "react-icons/lia";
 
 export default function BottomNav() {
   return (
@@ -18,9 +19,9 @@ export default function BottomNav() {
       </Link>
 
       {/* Reports */}
-      <Link href="/reports" className="flex flex-col items-center text-blue-500 hover:text-blue-800">
-        <BarChart2 className="w-6 h-6" />
-        <span className="text-sm">Reports</span>
+      <Link href="/chatbot" className="flex flex-col items-center text-blue-500 hover:text-blue-800">
+        <LiaQuestionSolid className="w-6 h-6" />
+        <span className="text-sm">Questions</span>
       </Link>
     </div>
   );
