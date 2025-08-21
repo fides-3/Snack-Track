@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import{useRef} from "react"
 import {FaCamera} from "react-icons/fa"
 import {useSession} from "next-auth/react"
+import {useRouter} from 'next/navigation'
+import LogOut  from "@/components/LogOutButton";
+
+// import Image from "next/image";
 
 // ✅ Define a type for the user object
 type UserType = {
@@ -19,8 +23,8 @@ export default function AccountPage() {
   const [message, setMessage] = useState("");
   const[image,setImage]=useState("/background.jpg")
   const fileInputRef=useRef<HTMLInputElement |null>(null);
-  const{data:session,status}=useSession();
-  
+  const{data:session}=useSession();
+  const router=useRouter()
 
 
   const handleImageChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
@@ -61,22 +65,22 @@ export default function AccountPage() {
     setMessage(data.message);
   };
 
-  const handleLogout = async () => {
-    await fetch("/api/logout");
-    window.location.href = "/login";
-  };
+  // const handleLogout = async () => {
+  //   await fetch("/api/logout");
+  //   router.push( "/");
+  // };
 
   // Return loading if user is not yet loaded
   if (!user) return <p className="text-center mt-10">Loading profile...</p>;
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border text-black dark:text-white rounded-xl shadow-2xl space-y-4">
+    <div className="max-w-md mx-auto mt-10 p-2 border text-black dark:text-white rounded-xl shadow-2xl space-y-4">
       <h1 className="text-2xl font-bold text-center">My Account</h1>
 
-      <div className="relative w-24 h-24 mx-auto ">
-      <img
+      <div className="relative w-40 h-40 mx-auto ">
+      <img                                                                              
         src={image}
-        className="w-24 h-24 mx-auto rounded-full"
+        className=" mx-auto w-40 h-40 rounded-full object-cover"
         alt="User"
       />
       <button
@@ -125,16 +129,19 @@ export default function AccountPage() {
         >
           Save Changes
         </button>
+        <LogOut/>
       </form>
 
       {message && <p className="text-center text-green-600">{message}</p>}
-
-      <button
+    
+      {/* <button
         onClick={handleLogout}
         className="w-full text-red-500 mt-4 hover:underline"
       >
         Logout
-      </button>
+      </button> */}
+      
+  
     </div>
   );
 }

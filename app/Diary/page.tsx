@@ -13,7 +13,7 @@ export default function Diary() {
   const waterGoal = 2.5;
   const [food,setFood]=useState("")
   const [calories,setCalories]=useState("")
-  const[message,setMessage]=useState("")
+ 
   
 
 
@@ -33,6 +33,7 @@ const handleSubmit=async(e: React.FormEvent)=>{
   const data=await res.json()
   if(res.ok){
     setCalories(data.calories)
+ 
   }
   else{
     alert(data.error ||"Error saving entry")
@@ -119,10 +120,10 @@ const handleSubmit=async(e: React.FormEvent)=>{
   }
 
   return (
-    <div className=" bg-[url('/backgroundimage.jpg')]  bg-cover bg-center    min-h-screen ">
+    <div className=" bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')]  bg-cover bg-center    min-h-screen ">
       {/* Water Intake */}
      <div className="   p-4  flex  items-center justify-center gap-4">
-      <div className="bg-white rounded-xl p-4   w-full h-96 space-y-8 shadow-xl">
+      <div className="bg-white dark:bg-black rounded-xl p-4   w-full h-96 space-y-8 shadow-xl">
         <h2 className="text-md  text-center  font-semibold mb-4"><u>Water Intake</u></h2>
         <div className="flex items-center justify-between mb-2">
           <span>
@@ -132,9 +133,9 @@ const handleSubmit=async(e: React.FormEvent)=>{
         <div className="flex items-center justify-center gap-8">
           <button
             onClick={handleIncrease}
-            className="bg-gray-100 rounded-full p-2"
+            className="bg-gray-100 dark:bg-gray-900 rounded-full p-2"
           >
-            <Plus className="w-5 h-5" />
+            <Plus className="w-5 h-5 text-black dark:text-white" />
           </button>
 
           {/* Water Glass */}
@@ -147,9 +148,9 @@ const handleSubmit=async(e: React.FormEvent)=>{
 
           <button
             onClick={handleDecrease}
-            className="bg-gray-100 rounded-full p-2"
+            className="bg-gray-100 dark:bg-gray-900 rounded-full p-2"
           >
-            <Minus className="w-5 h-5" />
+            <Minus className="w-5 h-5 text-black dark:text-white" />
           </button>
 
           <span className="text-blue-500 font-medium">{waterPercent}%</span>
@@ -182,10 +183,11 @@ const handleSubmit=async(e: React.FormEvent)=>{
         </div> */}
 
 
-        <div className="w-full  bg-white/90 h-96 space-y-8 backdrop-blur-md rounded-2xl shadow-xl p-8">
+        <div className="w-full  bg-white/90 dark:bg-black h-96 space-y-8 backdrop-blur-md rounded-2xl shadow-xl p-8">
               <div className='absolute top-0 right-0'>
                 <CalendarPicker/>
               </div>
+              <p className="text-sm text-center text-gray-700"><i>Click a date to view food and calories for that day. </i></p>
                 
                 {/* Header */}
                 <h2 className="text-center text-blue-500 font-medium text-xl mb-6 underline">
@@ -198,7 +200,7 @@ const handleSubmit=async(e: React.FormEvent)=>{
                   value={food}
                   placeholder="Enter the food taken..."
                   onChange={(e)=>setFood(e.target.value)}
-                  className="w-full p-3 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 text-center"
+                  className="w-full p-3 text-gray-700 dark:bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 text-center"
                 />
               
         
@@ -210,11 +212,11 @@ const handleSubmit=async(e: React.FormEvent)=>{
                 >
                   SUBMIT
                 </button>
-                <p>{message}</p>
+               
                 
                 </div>
                 <div className='flex mt-4 items-center justify-center'>
-                <p className='text-center font-semibold'>Estimated calories:{calories}cal</p>
+                <p className='text-center font-semibold'>Estimated calories:  {calories}  kcal</p>
                 </div>
               </div>
 

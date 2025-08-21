@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import { BookOpen, PieChart} from "lucide-react";
-import { LiaQuestionSolid } from "react-icons/lia";
+import { LuBot } from "react-icons/lu";
 
 export default function BottomNav() {
   return (
@@ -12,16 +12,18 @@ export default function BottomNav() {
         <span className="text-sm">Recipes</span>
       </Link>
 
-      {/* Diary */}
+    
       <Link href="/Diary" className=" text-blue-500   flex flex-col items-center hover:text-blue-800">
         <PieChart className="w-6 h-6" />
         <span className="text-sm ">Diary</span>
       </Link>
 
-      {/* Reports */}
+      
       <Link href="/chatbot" className="flex flex-col items-center text-blue-500 hover:text-blue-800">
-        <LiaQuestionSolid className="w-6 h-6" />
-        <span className="text-sm">Questions</span>
+    
+          <LuBot className="w-7 h-7 "/>
+          <span className="text-sm">AI Assistant</span>
+                
       </Link>
     </div>
   );

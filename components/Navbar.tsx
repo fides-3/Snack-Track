@@ -4,6 +4,7 @@ import Link from "next/link";
 import { User } from "lucide-react"; 
 import{useSession} from "next-auth/react";
 import {ThemeToggle} from "../app/theme-toggle"
+import Image from "next/image";
 
 
 // type UserType = {
@@ -36,7 +37,7 @@ export default function Navbar() {
       {status==="authenticated"? (
         <Link href="/account" className="flex items-center space-x-2">
           {session.user?.image ? (
-            <img src={session.user.image} alt="Profile" className="w-8 h-8 rounded-full" />
+            <Image src={session.user.image} alt="Profile" className="w-8 h-8 rounded-full" />
           ) : (
             <User className="w-6 h-6 text-gray-600 dark:text-white" />
           )}

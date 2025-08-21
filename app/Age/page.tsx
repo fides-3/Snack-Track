@@ -71,6 +71,7 @@ export default function Age() {
         </button>
     
     </div>
+    <p className='text-red-500 mt-2 text-center'>{message}</p>
     </div>
     </form>
     </div>

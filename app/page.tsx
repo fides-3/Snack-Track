@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Mail, Eye, EyeOff } from "lucide-react";
+
 // import { Button } from "@/components/ui/button";
 
 
@@ -49,7 +50,7 @@ export default function LoginPage() {
      
       <form onSubmit={handleLogin} className="bg-white dark:bg-[url('/darkbg.jpg')] p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
          <div className="w-1/2 hidden md:block">
-         <img src="/welcome1.jpg" className="h-full w-full object-cover" />
+         <img src="/welcome1.jpg"  alt="welcome" className="h-full w-full object-cover" />
       </div>
       <div className="w-full md:w-1/2 p-8 space-y-5">
        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
@@ -102,10 +103,10 @@ export default function LoginPage() {
             <span>Remember me</span>
           </label>
           <a
-            href="/forgot-password"
+            href="/Forgot-password"
             className="text-sm text-blue-500 hover:underline"
           >
-            Forgot password?
+            forgot password?
           </a>
         </div>
         
@@ -120,7 +121,7 @@ export default function LoginPage() {
         {message && <p className="text-red-500 mt-2 text-center">{message}</p>}
         
         <p className="text-center text-black dark:text-white mt-4 text-sm">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a href="/signup" className="text-blue-500 hover:underline">
             Sign up
           </a>

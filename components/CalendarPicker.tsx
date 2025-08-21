@@ -59,8 +59,8 @@ export default function CalendarPicker(){
            
 
             {showEntries&&startDate &&(
-                <div className=' bg-white p-2 shadow rounded '>
-                    <h2 className='font-semibold'>
+                <div className=' bg-white dark:bg-blue-950 p-2 shadow rounded '>
+                    <h2 className='font-semibold text-black dark:text-white'>
                         Entries for {startDate.toDateString()}
                     </h2>
                     {entries.length>0?(

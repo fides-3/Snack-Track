@@ -39,11 +39,11 @@ const handleSearch=async()=>{
   }
 
 }
-const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
-  if(e.key=='Enter'){
-    handleSearch()
-  }
-}
+// const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
+//   if(e.key=='Enter'){
+//     handleSearch()
+//   }
+// }
 
 
 
@@ -68,25 +68,13 @@ const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
       </button>
       </div>
 
-      {error && <p className='text-red-400 mt -4font-semibold text-sm'>{error}</p>}
+      {error && <p className='text-red-400 mt-4 font-semibold text-sm'>{error}</p>}
 
       {loading && <div className='text-blue-950 mt-4 text-center animate-pulse '>Loading recipes...</div>}
 
       {!loading && results.length>0 &&(
         <div className='mt-6 space-y-4 '>
-          {/* {results.map((recipe)=>(
-            <div
-            key={recipe.id}
-            className='bg-white bg-opacity-80 rounded-xl p-4 shadow-md'
-            >
-              <h2 className='font-semibold text-black'>{recipe.title}</h2>
-              {recipe.image && (
-                <img src={recipe.image} alt={recipe.title} className='mt-2 w-full rounded'/>
-              )}
           
-      
-        </div>
-          ))} */}
 
           {results.map((recipe) => (
   <div key={recipe.id} className='bg-blue-100 bg-opacity-80 rounded-xl  p-4 shadow-2xl'>
@@ -112,9 +100,7 @@ const handleKeyDown=(e: React.KeyboardEvent<HTMLInputElement>)=>{
       )}
           
         
-          {!loading && query && results.length === 0 && !error && (
-          <p className="mt-4 text-blue-800 text-center">No recipes found for "{query}".</p>
-        )}
+      
       <BottomNav/>
       
 </div>

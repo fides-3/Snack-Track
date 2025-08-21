@@ -11,65 +11,61 @@ import { FaWeight } from "react-icons/fa";
 import { FaRegHourglass } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { CiFaceSmile } from "react-icons/ci";
-import { LiaQuestionSolid } from "react-icons/lia";
 function Sidebar(){
     return(
         <div className="w-36 fixed  left-0 top-10  bg-white dark:bg-black  dark:text-white  text-black  h-screen">
 
             {/* <img src="/welcome1.jpg " className="pt-4 pb-0 pl-4  " width={450}/> */}
             
-            <ul className="flex flex-col pl-12 pt-0 font-md  space-y-5">
+            <ul className="flex flex-col pl-12 pt-0 font-md  space-y-6">
                 <div className="flex  items-center border-b border-gray-500 ">
-                    <IoHomeOutline className="space-x-2 w-5 h-5  dark:text-white"></IoHomeOutline>
+                    <IoHomeOutline className="space-x-2 w-5 h-5  dark:text-white"/>
                 <Link href="/" className=" dark:text-white">Home</Link>
                 </div>
                 <div className="flex items-center w-full border-b border-gray-500 ">
-                    <MdCreate className="space-x-2 w-5 h-5  dark:text-white"></MdCreate>
+                    <MdCreate className="space-x-2 w-5 h-5  dark:text-white"/>
                 <Link href="/signup">Signup</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <LuHandshake className="space-x-2 w-5 h-5"></LuHandshake>
+                    <LuHandshake className="space-x-2 w-5 h-5"/>
                 <Link href="/welcome">Welcome</Link>
                 </div>
                 <div className="flex border-b border-gray-500  items-center">
-                    <GoGoal className="space-x-4 w-5 h-5"></GoGoal>
+                    <GoGoal className="space-x-4 w-5 h-5"/>
                 <Link href="/Goal" >Goals</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <BiMaleFemale className="space-x-2 w-5 h-5"></BiMaleFemale>
+                    <BiMaleFemale className="space-x-2 w-5 h-5"/>
                 <Link href="/Gender" >Gender</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <FiActivity className="space-x-2 w-5 h-5"></FiActivity>
+                    <FiActivity className="space-x-2 w-5 h-5"/>
                 <Link href="/Activity" >Activity</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <GiBodyHeight className="space-x-2 w-5 h-5"></GiBodyHeight>
+                    <GiBodyHeight className="space-x-2 w-5 h-5"/>
                 <Link href="/Height" >Height</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <FaWeight className="space-x-2 w-5 h-5"></FaWeight>
+                    <FaWeight className="space-x-2 w-5 h-5"/>
                 <Link href="/Weight">Weight</Link>
                 </div>
 
                 <div className="flex items-center border-b border-gray-500 ">
-                    <FaRegHourglass className="w-5 h-5 space-x-2"></FaRegHourglass>
+                    <FaRegHourglass className="w-5 h-5 space-x-2"/>
                 <Link href="/Age">Age</Link>
                 </div>
 
                 <div className="flex items-center border-b border-gray-500 ">
-                    <CgProfile className="w-5 h-5 space-x-2"></CgProfile>
+                    <CgProfile className="w-5 h-5 space-x-2"/>
                 <Link href="/account" >Profile</Link>
                 </div>
                 <div className="flex items-center border-b border-gray-500 ">
-                    <CiFaceSmile className="w-5 h-5 space-x-2"></CiFaceSmile>
+                    <CiFaceSmile className="w-5 h-5 space-x-2"/>
                 <Link href="/userinfo">Me</Link>
                 </div>
-                {/* <div className="flex items-center border-b border-gray-500">
-                    <LiaQuestionSolid className="w-5 h-5 space-x-2"></LiaQuestionSolid>
-                <Link href="/chatbot">Questions</Link>    
-
-                </div> */}
+               
+               
             </ul>
            </div>
         

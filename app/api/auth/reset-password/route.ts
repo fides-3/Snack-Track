@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const { token, password } = await req.json();
 
   if (!token || !password) {
-    return NextResponse.json({ message: 'Token and password are required' }, { status: 400 });
+    return NextResponse.json({ message: 'Password is required' }, { status: 400 });
   }
 
   const user = await prisma.user.findFirst({

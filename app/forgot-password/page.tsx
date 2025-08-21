@@ -4,12 +4,12 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+
 // import { Mail, Eye, EyeOff } from "lucide-react";
 
 
-export default function forgotPassword() {
-  const router = useRouter();
+export default function ForgotPassword() {
+
   const [email, setEmail] = useState('');
   
 
@@ -90,45 +90,4 @@ export default function forgotPassword() {
     </div>
 )}
     
-//   <div className="flex items-center justify-center min-h-screen bg-white">
-//     <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
-//       <div className="text-center mb-6">
-//         <h1 className="text-2xl font-semibold">FORGOT PASSWORD</h1>
-//       </div>
 
-//       <div className="space-y-4">
-//         <div className="relative">
-//           <input
-//             id="email"
-//             type="email"
-//             placeholder="Email"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//             className="border px-4 py-2 w-full rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
-//             required
-//           />
-//         </div>
-
-//         <button
-//           className="bg-blue-500 hover:bg-blue-600 text-white w-full py-2 rounded-md transition"
-//           type="submit"
-//         >
-//           SEND
-//         </button>
-
-//         <div className="text-center text-sm">
-//           <p>
-//             Return to{" "}
-//             <Link href="/" className="text-blue-500 underline">
-//               login
-//             </Link>
-//           </p>
-//         </div>
-
-//         {message && <p className="text-red-500 text-center">{message}</p>}
-//       </div>
-//     </form>
-//   </div>
-// );
-
-  
