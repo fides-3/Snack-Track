@@ -39,7 +39,7 @@ function Activity(){
     return(
         <div className="bg-[url('/backgroundimage.jpg')]  dark:bg-[url('/darkbg.jpg')] bg-cover bg-center p-8   min-h-screen">
             <form onSubmit={handleSubmit}>
-     <div className=" relative mx-auto p-6 max-w-2xl rounded-full bg-white dark:bg-black place-items-center ">
+     <div className=" relative mx-auto p-20 max-w-2xl rounded-full bg-white dark:bg-black place-items-center ">
       <WizardProgress currentStep={3} totalSteps={6}  />
      
         

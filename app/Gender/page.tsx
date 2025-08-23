@@ -41,7 +41,8 @@ function Gender(){
         
         <div className="bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center min-h-screen p-8">
             <form onSubmit={handleSubmit}>
-            <div className=" relative max-w-2xl rounded-full  bg-white  dark:bg-black place-items-center mx-auto p-6    ">
+            <div className="relative max-w-2xl rounded-full  bg-white  dark:bg-black place-items-center mx-auto p-20">
+            
               <WizardProgress currentStep={2} totalSteps={6}  />
         <p className='font-semibold text-2xl text-black dark:text-white'>🔹What is your gender?</p>
         <br></br>

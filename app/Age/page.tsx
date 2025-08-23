@@ -42,7 +42,7 @@ export default function Age() {
     <div className="min-h-screen bg-[url('/backgroundimage.jpg')] dark:bg-[url('/darkbg.jpg')] bg-cover bg-center p-8 ">
       <br></br>
       <form onSubmit={handleSubmit}>
-    <div className=" relative rounded-full bg-white dark:bg-black place-items-center mx-auto p-6 max-w-2xl  ">
+    <div className=" relative rounded-full bg-white dark:bg-black place-items-center mx-auto p-20 max-w-2xl  ">
       <WizardProgress currentStep={6} totalSteps={6}  />
       <p className="font-semibold text-2xl text-black dark:text-white "> 🔹What is your age?</p>
     
