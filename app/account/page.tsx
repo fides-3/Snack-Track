@@ -74,7 +74,7 @@ export default function AccountPage() {
   if (!user) return <p className="text-center mt-10">Loading profile...</p>;
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-2 border text-black dark:text-white rounded-xl shadow-2xl space-y-4">
+    <div className="max-w-md mx-auto  mt-10 p-2 border text-black dark:text-white rounded-xl shadow-2xl space-y-4">
       <h1 className="text-2xl font-bold text-center">My Account</h1>
 
       <div className="relative w-40 h-40 mx-auto ">
@@ -122,6 +122,7 @@ export default function AccountPage() {
           onChange={(e) => setLocation(e.target.value)}
           className="w-full relative border p-2 rounded"
         />
+        {message && <p className="text-center text-green-600">{message}</p>}
         
         <button
           type="submit"
@@ -132,7 +133,7 @@ export default function AccountPage() {
         <LogOut/>
       </form>
 
-      {message && <p className="text-center text-green-600">{message}</p>}
+      
     
       {/* <button
         onClick={handleLogout}
