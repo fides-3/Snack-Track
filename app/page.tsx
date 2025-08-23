@@ -50,7 +50,7 @@ export default function LoginPage() {
      
       <form onSubmit={handleLogin} className="bg-white dark:bg-[url('/darkbg.jpg')] p-2 flex flex-row  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
          <div className="w-1/2 ">
-         <img src="/welcome1.jpg"  alt="welcome" className="h-full w-full object-cover" />
+         <img src="/welcome1.jpg"  alt="welcome" className="h-80 w-72 object-cover" />
       </div>
       <div className="w-1/2 p-4 space-y-5">
        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
