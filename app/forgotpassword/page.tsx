@@ -8,7 +8,7 @@ import { useState } from "react";
 // import { Mail, Eye, EyeOff } from "lucide-react";
 
 
-export default function Forgotpassword() {
+export default function ForgotPassword() {
 
   const [email, setEmail] = useState('');
   
