@@ -19,10 +19,10 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        console.log("🔐 Authorize called with:", { email: credentials?.email });
+        console.log(" Authorize called with:", { email: credentials?.email });
         
         if (!credentials?.email || !credentials?.password) {
-          console.log("❌ Missing credentials");
+          console.log("Missing credentials");
           return null;
         }
 
