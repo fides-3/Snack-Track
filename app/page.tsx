@@ -48,11 +48,11 @@ export default function LoginPage() {
    
     <div className=" flex justify-center min-h-screen bg-white dark:bg-black text-black dark:text-white transition-all duration-300 items-center">
      
-      <form onSubmit={handleLogin} className="bg-white dark:bg-[url('/darkbg.jpg')] p-8 flex  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
-         <div className="w-1/2 hidden md:block">
+      <form onSubmit={handleLogin} className="bg-white dark:bg-[url('/darkbg.jpg')] p-2 flex flex-row  rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+         <div className="w-1/2 ">
          <img src="/welcome1.jpg"  alt="welcome" className="h-full w-full object-cover" />
       </div>
-      <div className="w-full md:w-1/2 p-8 space-y-5">
+      <div className="w-1/2 p-4 space-y-5">
        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
 
       
